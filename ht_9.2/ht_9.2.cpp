@@ -94,9 +94,9 @@ public:
 	}
 
 	bool operator==(Fraction& fr) {
-		double a = numerator_ / static_cast<double>(denominator_);
-		double b = fr.numerator_ / static_cast<double>(fr.denominator_);
-		return a == b;
+		shortcut(*this);
+		shortcut(fr);
+		return this->numerator_ == fr.numerator_ && this->denominator_ == fr.denominator_;
 	}
 
 	bool operator!=(Fraction& fr) {
@@ -132,8 +132,22 @@ int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
+	
+	Fraction f1(1, 2);
+	Fraction f2(1, 2);
+	Fraction f3(1, 2);
+	Fraction f4(1, 2);
 
-	int num = 0, denom = 1;
+	(f1++ + f2).print();
+	std::cout << std::endl;
+	(++f3 + f4).print();
+	std::cout << std::endl;
+	
+	int i1 = 10, i2 = 10, i3 = 10, i4 = 10;
+	std::cout << ++i1 + i2 << std::endl;
+	std::cout << i3++ + i4 << std::endl;
+
+	/*int num = 0, denom = 1;
 	Fraction f1, f2;
 	std::cout << "Введите числитель дроби 1: ";
 	std::cin >> num;
@@ -199,6 +213,6 @@ int main()
 	(f1-- * f2).print();
 	std::cout << "\nЗначение дроби 1: ";
 	f1.print();
-	std::cout << "\n\n";
-
+	std::cout << "\n\n";*/
+	
 }
